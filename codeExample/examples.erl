@@ -24,8 +24,9 @@ recsumlist_helper(Res, [Head|Tail]) -> recsumlist_helper(Res + Head, Tail).  % E
 
 % Glorified sum function with higher-order function
 % Func is a higher-order function
+% fun(X,...) -> ... end, is a lambda function in erlang
 foldsum(List, Func) ->
-    lists:foldl(fun(X, Acc) -> Acc + Func(X) end, 0, List). % lists:foldl function is pretty much equivalent to C++ std::accumulate
+    lists:foldl(fun(X, Acc) -> Acc + Func(X) end, 0, List). % lists:foldl function is equivalent to C++ std::accumulate and reduce() in python
 
 % Quicksort, this one is neat
 qsort([]) -> [];
