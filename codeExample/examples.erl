@@ -2,15 +2,13 @@
 -import(lists, [map/2, foldl/3, foldr/3]).
 -export([add/2, fib/1, recsumlist/1, foldsum/2, qsort/1]).
 
-% Comments are written using %
-
-% Simple addition
+% Simple addition as a function
 add(Val1, Val2) -> Val1 + Val2. % Variables always start with capital letter, and functions end in "."
 
 % Fibonaccis number
-fib(1) -> 1; % Semicolon used to mark the end of function of this "pattern"/"case"
-fib(2) -> 2; 
-fib(Val) when is_integer(Val), Val > 2 -> fib(Val-1) + fib(Val-2); 
+fib(0) -> 0; % Semicolon used to mark the end of function of this "pattern"/"case"
+fib(1) -> 1; 
+fib(N) when is_integer(N), N > 1 -> fib(N-1) + fib(N-2); 
 fib(_) -> 1.
 
 % Sum over list using recursion
@@ -30,6 +28,8 @@ foldsum(List, Func) ->
 
 % Quicksort, this one is neat
 qsort([]) -> [];
+% Use Comma to separate lines
+% This "looks imperative", but trust me, it's not
 qsort([Head|Tail]) ->
     Left = [X || X <- Tail, X < Head], % This is called a list-comprehension, also exist in Python
     Right = [X || X <- Tail, X >= Head], % Does not exist in C++, is equivalent of minimum 5 lines of code using std::copy_if, and std::transform
